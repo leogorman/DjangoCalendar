@@ -2,3 +2,9 @@
 \.idea/
 
 calendarApp/__pycache__/
+
+*.sqlite3
+
+DjangoCalendar/__pycache__/
+
+*.pyc

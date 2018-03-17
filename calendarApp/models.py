@@ -11,3 +11,6 @@ class Entry(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.date}'
+
+    def short_description(self):
+        return self.description[:15]

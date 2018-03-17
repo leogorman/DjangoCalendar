@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
@@ -10,16 +11,19 @@ def index(request):
     return render(request, 'calendarApp/index.html')
 
 
+@login_required
 def calendar(request):
-    entries = Entry.objects.all()
+    entries = Entry.objects.filter(author=request.user)
     return render(request, 'calendarApp/calendar.html', {'entries': entries})
 
 
+@login_required
 def details(request, pk):
     entry = Entry.objects.get(id=pk)
     return render(request, 'calendarApp/details.html', {'entry': entry})
 
 
+@login_required
 def add(request):
 
     if request.method == 'POST':
@@ -32,24 +36,26 @@ def add(request):
 
             Entry.objects.create(
                 name=name,
+                author=request.user,
                 date=date,
                 description=description,
             ).save()
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/calendar')
     else:
         form = EntryForm()
 
     return render(request, 'calendarApp/form.html', {'form': form})
 
 
+@login_required
 def delete(request, pk):
 
     if request.method == 'DELETE':
         entry = get_object_or_404(Entry, id=pk)
         entry.delete()
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/calendar')
 
 
 def signup(request):

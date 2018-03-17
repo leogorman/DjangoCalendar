@@ -5,13 +5,14 @@
     <button onclick="window.location='{% url 'index' %}'" class="btn-success">Go Back</button>
     <br />
     <br />
-    <h1>New Event</h1>
+    <h1>Add New Event</h1>
     <form method="POST">
     {% csrf_token %}
     {% for field in form %}
         {{ field.errors }}
         <label>{{ field.label }}</label>
-        <input placeholder="{{ field.label }}" name="{{ field.name }}" class="form-control" />
+        <input name="{{ field.name }}" class="form-control" />
+        <hr />
     {% endfor %}
     <br />
     <button class="btn-success" type="submit">Create</button>

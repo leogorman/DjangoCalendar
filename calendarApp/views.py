@@ -45,7 +45,7 @@ def add(request):
     else:
         form = EntryForm()
 
-    return render(request, 'calendarApp/form.html', {'form': form})
+    return render(request, 'calendarApp/addNewEvent.html', {'form': form})
 
 
 @login_required

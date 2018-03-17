@@ -1,7 +1,6 @@
 {% extends 'calendarApp/base.html' %}
 {% block content %}
-<div class="page-center container">
-    <br />
+<div class="centered container">
     <h1>Sign Up</h1>
     <form method="POST">
     {% csrf_token %}
@@ -15,5 +14,7 @@
     <br />
     <button class="btn-success" type="submit">Sign Up</button>
     </form>
+    <br />
+    <button onclick="window.location='{% url 'login' %}'" class="btn-danger">Go Back</button>
 </div>
 {% endblock %}

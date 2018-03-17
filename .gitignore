@@ -8,5 +8,3 @@ calendarApp/__pycache__/
 DjangoCalendar/__pycache__/
 
 *.pyc
-
-venv/

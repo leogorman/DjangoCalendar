@@ -1,7 +1,7 @@
 {% extends 'calendarApp/base.html' %}
 {% block content %}
     <div class="container jumbotron">
-        <button onclick="window.location='{% url 'index' %}'" class="btn btn-success">Go Back</button>
+        <button onclick="window.location='{% url 'calendar' %}'" class="btn btn-success">Go Back</button>
         <hr />
         <h1>Event: {{ entry.name }}</h1>
         <hr />
